@@ -1,5 +1,4 @@
-﻿using Ingredient = CraftData.Ingredient;
-using Nautilus.Assets;
+﻿using Nautilus.Assets;
 using Nautilus.Assets.Gadgets;
 using Nautilus.Assets.PrefabTemplates;
 using Nautilus.Crafting;
@@ -31,9 +30,9 @@ public static class MushroomTerrariumSmall
     
     public static IEnumerator ModifyPrefabAsync(GameObject obj) { // called on obj as obj is instantiated from this prefab
       
-      // Wait for the PrefabFactory to complete asynchronous initialization
+      // Wait for the PrefabHelper to complete asynchronous initialization
       
-        yield return CoroutineHost.StartCoroutine(PrefabFactory.ensureInitialized());
+        yield return CoroutineHost.StartCoroutine(PrefabHelper.EnsureInitialized());
         
         // Add MushroomGrower component
         
@@ -65,18 +64,18 @@ public static class MushroomTerrariumSmall
         
       
       //----------------------------------------------------------------------------------------------------------------
-      // Use PrefabFactory to add models. All prefabs referenced must be listed in PrefabFactory.prefabIdModelNameList
+      // Use PrefabHelper to add models. All prefabs referenced must be listed in PrefabHelper.prefabIdModelNameList
       //----------------------------------------------------------------------------------------------------------------
       
         // Benzene
-        /*Transform model = PrefabFactory.AttachModelFromPrefabTo("986b31ea-3c9d-498c-9f38-2af8ffe86ed7", tubeShelfModel);
+        /*Transform model = PrefabHelper.AttachModelFromPrefabTo("986b31ea-3c9d-498c-9f38-2af8ffe86ed7", tubeShelfModel);
         model.transform.localScale = new Vector3((float)2,(float)2,(float)2);
         model.position = tubeShelfModel.transform.position + new Vector3(0f,(float)1.0203,(float)-0.1);*/
         
         // For each Shelf
         for(int i = 0; i < 4; i++) {
           // Place a Composite Pot on each shelf
-          Transform planterModel = PrefabFactory.AttachModelFromPrefabTo("5c8cb04b-9f30-49e7-8687-0cbb338fc7fa", tubeShelfModel.transform);
+          Transform planterModel = PrefabHelper.AttachModelFromPrefabTo("5c8cb04b-9f30-49e7-8687-0cbb338fc7fa", tubeShelfModel.transform);
           planterModel.localScale = new Vector3(1.8f, 0.6f, 1.8f);
           planterModel.Find("Base_interior_Planter_Pot_02").Find("pot_generic_plant_02").localScale = new Vector3(2f, 6f, 2f);
           float yPos;
@@ -113,7 +112,7 @@ public static class MushroomTerrariumSmall
           model.parent = planterModel;
           
           // Place Mushroom 1: Qunituple Pink Cap
-          model = PrefabFactory.AttachModelFromPrefabTo("c7faff7e-d9ff-41b4-9782-98d2e09d29c1", tubeShelfModel.transform);
+          model = PrefabHelper.AttachModelFromPrefabTo("c7faff7e-d9ff-41b4-9782-98d2e09d29c1", tubeShelfModel.transform);
           model.localPosition = rot * new Vector3(0.25f,yPos+0.125f,0.25f);
           model.localScale = new Vector3(1f, 1f, 1f);
           model.Rotate(new Vector3(0, theta+180, 0), Space.World);
@@ -121,7 +120,7 @@ public static class MushroomTerrariumSmall
           model.parent = planterModel;
           
           // Place Mushroom 2: Triple Speckled Rattler
-          model = PrefabFactory.AttachModelFromPrefabTo("98be0944-e0b3-4fba-8f08-ca5d322c22f6", tubeShelfModel.transform);
+          model = PrefabHelper.AttachModelFromPrefabTo("98be0944-e0b3-4fba-8f08-ca5d322c22f6", tubeShelfModel.transform);
           model.localPosition = rot * new Vector3(0.2f,yPos+0.125f,-0.2f);
           model.localScale = new Vector3(0.025f, 0.025f, 0.03f);
           model.Rotate(new Vector3(0, 160+theta, 0), Space.World);
@@ -129,7 +128,7 @@ public static class MushroomTerrariumSmall
           model.parent = planterModel;
           
           // Place Mushroom 3: Qunituple Pink Cap
-          model = PrefabFactory.AttachModelFromPrefabTo("c7faff7e-d9ff-41b4-9782-98d2e09d29c1", tubeShelfModel.transform);
+          model = PrefabHelper.AttachModelFromPrefabTo("c7faff7e-d9ff-41b4-9782-98d2e09d29c1", tubeShelfModel.transform);
           model.localPosition = rot * new Vector3(-0.25f,yPos+0.125f,-0.25f);
           model.localScale = new Vector3(1f, 1f, 1f);
           model.Rotate(new Vector3(0, theta, 0), Space.World);
@@ -137,21 +136,21 @@ public static class MushroomTerrariumSmall
           model.parent = planterModel;
           
           // Place Mushroom 4: Jaffa Cup
-          model = PrefabFactory.AttachModelFromPrefabTo("35056c71-5da7-4e73-be60-3c22c5c9e75c", tubeShelfModel.transform);
+          model = PrefabHelper.AttachModelFromPrefabTo("35056c71-5da7-4e73-be60-3c22c5c9e75c", tubeShelfModel.transform);
           model.localPosition = Quaternion.AngleAxis(10, Vector3.up) * rot * new Vector3(-0.25f,yPos+0.15f,0.25f);
           model.localScale = new Vector3(0.3f, 0.3f, 0.3f);
           model.Rotate(new Vector3(0, 110+theta, 0), Space.World);
           model.parent = planterModel;
           
           // Place Mushroom 5: Small Jaffa Cup
-          model = PrefabFactory.AttachModelFromPrefabTo("35056c71-5da7-4e73-be60-3c22c5c9e75c", tubeShelfModel.transform);
+          model = PrefabHelper.AttachModelFromPrefabTo("35056c71-5da7-4e73-be60-3c22c5c9e75c", tubeShelfModel.transform);
           model.localPosition = Quaternion.AngleAxis(-30, Vector3.up) * rot * new Vector3(-0.27f,yPos+0.2f,0.27f);
           model.localScale = new Vector3(0.15f, 0.15f, 0.15f);
           model.Rotate(new Vector3(0, 90+theta, 0), Space.World);
           model.parent = planterModel;
           
           // Place Mushroom 7: Tiny Jaffa Cup
-          model = PrefabFactory.AttachModelFromPrefabTo("35056c71-5da7-4e73-be60-3c22c5c9e75c", tubeShelfModel.transform);
+          model = PrefabHelper.AttachModelFromPrefabTo("35056c71-5da7-4e73-be60-3c22c5c9e75c", tubeShelfModel.transform);
           model.localPosition = Quaternion.AngleAxis(-10, Vector3.up) * rot * new Vector3(-0.32f,yPos+0.175f,0.32f);
           model.localScale = new Vector3(0.1f, 0.1f, 0.1f);
           model.Rotate(new Vector3(0, 90+theta, 0), Space.World);
@@ -224,7 +223,7 @@ public static class MushroomTerrariumSmall
         // assign the created clone model to the prefab itself:
         tubeShelfPrefab.SetGameObject(tubeShelfClone);
           // Sets the internal variable GameObject tubeShelfPrefab._prefab to tubeShelfClone
-          // Sets the internal variable PrefabFactoryAsync tubeShelfPrefab.Prefab to a function taking an argument obj and returning SyncPrefab(obj, prefab) where
+          // Sets the internal variable PrefabHelperAsync tubeShelfPrefab.Prefab to a function taking an argument obj and returning SyncPrefab(obj, prefab) where
           // IEnumerator SyncPrefab(IOut<GameObject> obj, GameObject prefab) {
           //  obj.Set(prefab);
           //  yield break; // indicates that the iterable IOut has no more elements

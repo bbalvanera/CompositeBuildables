@@ -1,5 +1,4 @@
-﻿using Ingredient = CraftData.Ingredient;
-using Nautilus.Assets;
+﻿using Nautilus.Assets;
 using Nautilus.Assets.Gadgets;
 using Nautilus.Assets.PrefabTemplates;
 using Nautilus.Crafting;
@@ -28,9 +27,9 @@ public static class TubularShelfSmall
     
     public static IEnumerator ModifyPrefabAsync(GameObject obj) { // called on obj as obj is instantiated from this prefab
       
-      // Wait for the PrefabFactory to complete asynchronous initialization
+      // Wait for the PrefabHelper to complete asynchronous initialization
       
-        yield return CoroutineHost.StartCoroutine(PrefabFactory.ensureInitialized());
+        yield return CoroutineHost.StartCoroutine(PrefabHelper.EnsureInitialized());
 
       // Configure placement rules
       
@@ -55,11 +54,11 @@ public static class TubularShelfSmall
         
       
       //----------------------------------------------------------------------------------------------------------------
-      // Use PrefabFactory to add models. All prefabs referenced must be listed in PrefabFactory.prefabIdModelNameList
+      // Use PrefabHelper to add models. All prefabs referenced must be listed in PrefabHelper.prefabIdModelNameList
       //----------------------------------------------------------------------------------------------------------------
       
         // Benzene
-        /*Transform model = PrefabFactory.AttachModelFromPrefabTo("986b31ea-3c9d-498c-9f38-2af8ffe86ed7", tubeShelfModel);
+        /*Transform model = PrefabHelper.AttachModelFromPrefabTo("986b31ea-3c9d-498c-9f38-2af8ffe86ed7", tubeShelfModel);
         model.transform.localScale = new Vector3((float)2,(float)2,(float)2);
         model.position = tubeShelfModel.transform.position + new Vector3(0f,(float)1.0203,(float)-0.1);*/
         
@@ -99,24 +98,24 @@ public static class TubularShelfSmall
           Quaternion rot=Quaternion.AngleAxis(theta, Vector3.up);
           
           // Place Supply 1: 
-          Transform model = PrefabFactory.AttachModelFromPrefabTo(modelID, tubeShelfModel.transform);
+          Transform model = PrefabHelper.AttachModelFromPrefabTo(modelID, tubeShelfModel.transform);
           model.localPosition = rot * new Vector3(0.25f,yPos+dy,0.25f);
           model.localScale = new Vector3(2f, 2f, 2f);
           
           // Place Supply 2:
-          /*model = PrefabFactory.AttachModelFromPrefabTo("98be0944-e0b3-4fba-8f08-ca5d322c22f6", tubeShelfModel.transform);
+          /*model = PrefabHelper.AttachModelFromPrefabTo("98be0944-e0b3-4fba-8f08-ca5d322c22f6", tubeShelfModel.transform);
           model.localPosition = rot * new Vector3(0.25f,yPos+0.125f,-0.25f);
           model.localScale = new Vector3(0.025f, 0.025f, 0.03f);
           model.GetComponent<Renderer>().material.SetColor("_Scale", new Color(0f, 0f, 0f, 0f)); // disable blowing in wind
           
           // Place Supply 3:
-          model = PrefabFactory.AttachModelFromPrefabTo("c7faff7e-d9ff-41b4-9782-98d2e09d29c1", tubeShelfModel.transform);
+          model = PrefabHelper.AttachModelFromPrefabTo("c7faff7e-d9ff-41b4-9782-98d2e09d29c1", tubeShelfModel.transform);
           model.localPosition = rot * new Vector3(-0.25f,yPos+0.125f,-0.25f);
           model.localScale = new Vector3(1f, 1f, 1f);
           model.GetComponent<Renderer>().material.SetColor("_Scale", new Color(0f, 0f, 0f, 0f)); // disable blowing in wind
           
           // Place Supply 4:
-          model = PrefabFactory.AttachModelFromPrefabTo("35056c71-5da7-4e73-be60-3c22c5c9e75c", tubeShelfModel.transform);
+          model = PrefabHelper.AttachModelFromPrefabTo("35056c71-5da7-4e73-be60-3c22c5c9e75c", tubeShelfModel.transform);
           model.localPosition = rot * new Vector3(-0.25f,yPos+0.125f,0.25f);
           model.localScale = new Vector3(0.3f, 0.3f, 0.3f);
           model.GetComponent<Renderer>().material.SetColor("_Scale", new Color(0f, 0f, 0f, 0f)); // disable blowing in wind*/
@@ -180,7 +179,7 @@ public static class TubularShelfSmall
         // assign the created clone model to the prefab itself:
         tubeShelfPrefab.SetGameObject(tubeShelfClone);
           // Sets the internal variable GameObject tubeShelfPrefab._prefab to tubeShelfClone
-          // Sets the internal variable PrefabFactoryAsync tubeShelfPrefab.Prefab to a function taking an argument obj and returning SyncPrefab(obj, prefab) where
+          // Sets the internal variable PrefabHelperAsync tubeShelfPrefab.Prefab to a function taking an argument obj and returning SyncPrefab(obj, prefab) where
           // IEnumerator SyncPrefab(IOut<GameObject> obj, GameObject prefab) {
           //  obj.Set(prefab);
           //  yield break; // indicates that the iterable IOut has no more elements

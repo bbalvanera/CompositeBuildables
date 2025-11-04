@@ -1,5 +1,4 @@
-﻿using Ingredient = CraftData.Ingredient;
-using Nautilus.Assets;
+﻿using Nautilus.Assets;
 using Nautilus.Assets.Gadgets;
 using Nautilus.Assets.PrefabTemplates;
 using Nautilus.Crafting;
@@ -29,9 +28,9 @@ public static class ScienceBench2
     
     public static IEnumerator ModifyPrefabAsync(GameObject obj) { // called on obj as obj is instantiated from this prefab
       
-      // Wait for the PrefabFactory to complete asynchronous initialization
+      // Wait for the PrefabHelper to complete asynchronous initialization
       
-        yield return CoroutineHost.StartCoroutine(PrefabFactory.ensureInitialized());
+        yield return CoroutineHost.StartCoroutine(PrefabHelper.EnsureInitialized());
 
       // Configure placement rules
       
@@ -51,25 +50,25 @@ public static class ScienceBench2
         cb.bounds.size = new Vector3(2.2433f,1.02f,0.8673f);
       
       //----------------------------------------------------------------------------------------------------------------
-      // Use PrefabFactory to add models. All prefabs referenced must be listed in PrefabFactory.prefabIdModelNameList
+      // Use PrefabHelper to add models. All prefabs referenced must be listed in PrefabHelper.prefabIdModelNameList
       //----------------------------------------------------------------------------------------------------------------
       
         // Sample Analyzer
-        Transform model = PrefabFactory.AttachModelFromPrefabTo("3fd9050b-4baf-4a78-a883-e774c648887c", counterModel.transform);
+        Transform model = PrefabHelper.AttachModelFromPrefabTo("3fd9050b-4baf-4a78-a883-e774c648887c", counterModel.transform);
         model.position = counterModel.transform.position + new Vector3((float)0.5,(float)1.0203,(float)-0.1);
         
         // Cylindrical Test Tube
-        model = PrefabFactory.AttachModelFromPrefabTo("7f601dd4-0645-414d-bb62-5b0b62985836", counterModel.transform); 
+        model = PrefabHelper.AttachModelFromPrefabTo("7f601dd4-0645-414d-bb62-5b0b62985836", counterModel.transform); 
         model.rotation = Quaternion.Euler(0, -45, 0);
         model.position = counterModel.transform.position + new Vector3((float)-0.28,(float)1.0203,(float)0);
         
         // Cylindrical Test Tube 2
-        model = PrefabFactory.AttachModelFromPrefabTo("7f601dd4-0645-414d-bb62-5b0b62985836", counterModel.transform);
+        model = PrefabHelper.AttachModelFromPrefabTo("7f601dd4-0645-414d-bb62-5b0b62985836", counterModel.transform);
         model.rotation = Quaternion.Euler(0, -40, 0);
         model.position = counterModel.transform.position + new Vector3((float)-0.17,(float)1.0203,(float)-0.2);
         
         // Clipboard
-        model = PrefabFactory.AttachModelFromPrefabTo("a7519acf-6dec-429e-82ed-bbcf7a616c50", counterModel.transform);
+        model = PrefabHelper.AttachModelFromPrefabTo("a7519acf-6dec-429e-82ed-bbcf7a616c50", counterModel.transform);
         model.rotation = Quaternion.Euler(0, 280, 0) * Quaternion.Euler(-90, 0, 0);
         model.position = counterModel.transform.position + new Vector3((float)-0.75,(float)1.0203,(float)0.1);
       
@@ -130,7 +129,7 @@ public static class ScienceBench2
         // assign the created clone model to the prefab itself:
         planterPrefab.SetGameObject(counterClone);
           // Sets the internal variable GameObject planterPrefab._prefab to counterClone
-          // Sets the internal variable PrefabFactoryAsync planterPrefab.Prefab to a function taking an argument obj and returning SyncPrefab(obj, prefab) where
+          // Sets the internal variable PrefabHelperAsync planterPrefab.Prefab to a function taking an argument obj and returning SyncPrefab(obj, prefab) where
           // IEnumerator SyncPrefab(IOut<GameObject> obj, GameObject prefab) {
           //  obj.Set(prefab);
           //  yield break; // indicates that the iterable IOut has no more elements

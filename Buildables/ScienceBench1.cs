@@ -1,5 +1,4 @@
-﻿using Ingredient = CraftData.Ingredient;
-using Nautilus.Assets;
+﻿using Nautilus.Assets;
 using Nautilus.Assets.Gadgets;
 using Nautilus.Assets.PrefabTemplates;
 using Nautilus.Crafting;
@@ -29,9 +28,9 @@ public static class ScienceBench1
     
     public static IEnumerator ModifyPrefabAsync(GameObject obj) { // called on obj as obj is instantiated from this prefab
       
-      // Wait for the PrefabFactory to complete asynchronous initialization
+      // Wait for the PrefabHelper to complete asynchronous initialization
       
-        yield return CoroutineHost.StartCoroutine(PrefabFactory.ensureInitialized());
+        yield return CoroutineHost.StartCoroutine(PrefabHelper.EnsureInitialized());
 
       // Configure placement rules
       
@@ -51,35 +50,35 @@ public static class ScienceBench1
         cb.bounds.position = new Vector3(0f,0.52f,0f);
         cb.bounds.size = new Vector3(2.2433f,1.02f,0.8673f);
       //----------------------------------------------------------------------------------------------------------------
-      // Use PrefabFactory to add models. All prefabs referenced must be listed in PrefabFactory.prefabIdModelNameList
+      // Use PrefabHelper to add models. All prefabs referenced must be listed in PrefabHelper.prefabIdModelNameList
       //----------------------------------------------------------------------------------------------------------------
       
         // Microscope
-        Transform model = PrefabFactory.AttachModelFromPrefabTo("2cee55bc-6136-47c5-a1ed-14c8f3203856", counterModel.transform);
+        Transform model = PrefabHelper.AttachModelFromPrefabTo("2cee55bc-6136-47c5-a1ed-14c8f3203856", counterModel.transform);
         model.position = counterModel.transform.position + new Vector3((float)0,(float)1.0203,(float)-0.1);
         
         // Cylindrical Test Tube
-        model = PrefabFactory.AttachModelFromPrefabTo("7f601dd4-0645-414d-bb62-5b0b62985836", counterModel.transform); 
+        model = PrefabHelper.AttachModelFromPrefabTo("7f601dd4-0645-414d-bb62-5b0b62985836", counterModel.transform); 
         model.rotation = Quaternion.Euler(0, -45, 0);
         model.position = counterModel.transform.position + new Vector3((float)-0.58,(float)1.0203,(float)0.1);
         
         // Large Square Jar with Lid
-        model = PrefabFactory.AttachModelFromPrefabTo("e7f9c5e7-3906-4efd-b239-28783bce17a5", counterModel.transform);
+        model = PrefabHelper.AttachModelFromPrefabTo("e7f9c5e7-3906-4efd-b239-28783bce17a5", counterModel.transform);
         model.rotation = Quaternion.Euler(0, -40, 0);
         model.position = counterModel.transform.position + new Vector3((float)-0.77,(float)1.0203,(float)-0.1);
         
         // Small Square Jar with Lid
-        model = PrefabFactory.AttachModelFromPrefabTo("e3e00261-92fc-4f52-bad2-4f0e5802a43d", counterModel.transform);
+        model = PrefabHelper.AttachModelFromPrefabTo("e3e00261-92fc-4f52-bad2-4f0e5802a43d", counterModel.transform);
         model.rotation = Quaternion.Euler(0, -40, 0);
         model.position = counterModel.transform.position + new Vector3((float)-0.97,(float)1.0203,(float)0.12);
         
         // Clipboard
-        model = PrefabFactory.AttachModelFromPrefabTo("a7519acf-6dec-429e-82ed-bbcf7a616c50", counterModel.transform);
+        model = PrefabHelper.AttachModelFromPrefabTo("a7519acf-6dec-429e-82ed-bbcf7a616c50", counterModel.transform);
         model.rotation = Quaternion.Euler(0, 235, 0) * Quaternion.Euler(-90, 0, 0);
         model.position = counterModel.transform.position + new Vector3((float)0.75,(float)1.0203,(float)0.1);
         
         // Hatching Enzymes
-        model = PrefabFactory.AttachModelFromPrefabTo("fab9bc63-1916-4434-a9c6-231f421ffbb5", counterModel.transform); 
+        model = PrefabHelper.AttachModelFromPrefabTo("fab9bc63-1916-4434-a9c6-231f421ffbb5", counterModel.transform); 
         model.rotation = Quaternion.Euler(0, -110, 0) * Quaternion.Euler(0, -20, 0);
         model.position = counterModel.transform.position + new Vector3((float)0.5,(float)1.0203,(float)-0.25);
       
@@ -141,7 +140,7 @@ public static class ScienceBench1
         // assign the created clone model to the prefab itself:
         planterPrefab.SetGameObject(counterClone);
           // Sets the internal variable GameObject planterPrefab._prefab to counterClone
-          // Sets the internal variable PrefabFactoryAsync planterPrefab.Prefab to a function taking an argument obj and returning SyncPrefab(obj, prefab) where
+          // Sets the internal variable PrefabHelperAsync planterPrefab.Prefab to a function taking an argument obj and returning SyncPrefab(obj, prefab) where
           // IEnumerator SyncPrefab(IOut<GameObject> obj, GameObject prefab) {
           //  obj.Set(prefab);
           //  yield break; // indicates that the iterable IOut has no more elements

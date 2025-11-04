@@ -1,4 +1,3 @@
-using Ingredient = CraftData.Ingredient;
 using Nautilus.Assets;
 using Nautilus.Assets.Gadgets;
 using Nautilus.Assets.PrefabTemplates;
@@ -106,7 +105,7 @@ public class MushroomGrower : HandTarget, IHandTarget//, IProtoEventListener
     if(timeRemainingPink == 0f)
     {
       if(storageContainer.container.GetCount(TechType.PinkMushroom) < maxPinkCap && storageContainer.container.HasRoomFor(1,1)) {
-        Pickupable component = Object.Instantiate(PrefabFactory.GetPrefabGameObject("7f9a765d-0b4e-4b3f-81b9-38b38beedf55")).GetComponent<Pickupable>();
+        Pickupable component = Object.Instantiate(PrefabHelper.GetPrefabGameObject("7f9a765d-0b4e-4b3f-81b9-38b38beedf55")).GetComponent<Pickupable>();
         component.Pickup(events: false);
         InventoryItem item = new InventoryItem(component);
         storageContainer.container.UnsafeAdd(item);
@@ -123,7 +122,7 @@ public class MushroomGrower : HandTarget, IHandTarget//, IProtoEventListener
         {
           baseBioReactors.Shuffle();
           var baseBioReactor = baseBioReactors.First();
-          Pickupable component = Object.Instantiate(PrefabFactory.GetPrefabGameObject("7f9a765d-0b4e-4b3f-81b9-38b38beedf55")).GetComponent<Pickupable>();
+          Pickupable component = Object.Instantiate(PrefabHelper.GetPrefabGameObject("7f9a765d-0b4e-4b3f-81b9-38b38beedf55")).GetComponent<Pickupable>();
           component.Pickup(false);
           baseBioReactor.container.AddItem(component);
           timeRemainingPink = -1f;
@@ -134,7 +133,7 @@ public class MushroomGrower : HandTarget, IHandTarget//, IProtoEventListener
     if(timeRemainingRattler == 0f)
     {
       if(storageContainer.container.GetCount(TechType.PurpleRattle) < maxRattler && storageContainer.container.HasRoomFor(1,1)) {
-        Pickupable component = Object.Instantiate(PrefabFactory.GetPrefabGameObject("28818d8a-5e50-41f0-8e14-44cb89a0b611")).GetComponent<Pickupable>();
+        Pickupable component = Object.Instantiate(PrefabHelper.GetPrefabGameObject("28818d8a-5e50-41f0-8e14-44cb89a0b611")).GetComponent<Pickupable>();
         component.Pickup(events: false);
         InventoryItem item = new InventoryItem(component);
         storageContainer.container.UnsafeAdd(item);
@@ -151,7 +150,7 @@ public class MushroomGrower : HandTarget, IHandTarget//, IProtoEventListener
         {
           baseBioReactors.Shuffle();
           var baseBioReactor = baseBioReactors.First();
-          Pickupable component = Object.Instantiate(PrefabFactory.GetPrefabGameObject("28818d8a-5e50-41f0-8e14-44cb89a0b611")).GetComponent<Pickupable>();
+          Pickupable component = Object.Instantiate(PrefabHelper.GetPrefabGameObject("28818d8a-5e50-41f0-8e14-44cb89a0b611")).GetComponent<Pickupable>();
           component.Pickup(false);
           baseBioReactor.container.AddItem(component);
           timeRemainingRattler = -1f;
@@ -162,7 +161,7 @@ public class MushroomGrower : HandTarget, IHandTarget//, IProtoEventListener
     if(timeRemainingJaffa == 0f)
     {
       if(storageContainer.container.GetCount(TechType.OrangeMushroomSpore) < maxJaffa && storageContainer.container.HasRoomFor(2,2)) {
-        Pickupable component = Object.Instantiate(PrefabFactory.GetPrefabGameObject("ff727b98-8d85-416a-9ee7-4beda86d2ba2")).GetComponent<Pickupable>();
+        Pickupable component = Object.Instantiate(PrefabHelper.GetPrefabGameObject("ff727b98-8d85-416a-9ee7-4beda86d2ba2")).GetComponent<Pickupable>();
         component.Pickup(events: false);
         InventoryItem item = new InventoryItem(component);
         storageContainer.container.UnsafeAdd(item);
@@ -179,7 +178,7 @@ public class MushroomGrower : HandTarget, IHandTarget//, IProtoEventListener
         {
           baseBioReactors.Shuffle();
           var baseBioReactor = baseBioReactors.First();
-          Pickupable component = Object.Instantiate(PrefabFactory.GetPrefabGameObject("ff727b98-8d85-416a-9ee7-4beda86d2ba2")).GetComponent<Pickupable>();
+          Pickupable component = Object.Instantiate(PrefabHelper.GetPrefabGameObject("ff727b98-8d85-416a-9ee7-4beda86d2ba2")).GetComponent<Pickupable>();
           component.Pickup(false);
           baseBioReactor.container.AddItem(component);
           timeRemainingJaffa = -1f;
